@@ -1,0 +1,62 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+
+{% block title %}
+    AppCalendary | Listado de Vacaciones
+{% endblock title %}
+
+{% block content %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Vacaciones</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Listado de Vacaciones</p>
+    </div>
+</header>
+<div class="container">
+    <h1 class="mt-4" >Listado de Vacaciones</h1>
+    <div class="mb-4">
+        <form action="" method="get">
+            <input type="text" class= "form-control" name="consulta" placeholder="Buscar Vacaciones">
+        </form>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre y Apellido</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Fecha Fin</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for object in object_list %}
+           <tr>
+                <td>{{ object.nombre }} {{ object.apellido }}</td>
+                <td>{{ object.fechaInicio }}</td>
+                <td>{{ object.fechaFin }}</td>
+                <td>
+                    <a href="{% url 'vacaciones:vacaciones_detail' pk=object.id %}" class = "btn btn-primary me-2">Ver en Detalle</a>
+                    <a href="{% url 'vacaciones:vacaciones_update' pk=object.id %}" class = "btn btn-warning me-2">Modificar</a>
+                    <a href="{% url 'vacaciones:vacaciones_delete' pk=object.id %}" class = "btn btn-danger">Borrar</a> 
+                </td>
+            </tr>
+           {% empty %}
+            <tr>
+                <td colspan="3" class="text-center">No hay coincidencias.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'vacaciones:vacaciones_create'%} " class="btn btn-primary">Crear Vacaciones</a>
+    <a href="{% url 'vacaciones:vacaciones' %}" class = "btn btn-secondary">Volver</a>    
+</div>
+<br><br>
+{% endblock content %}

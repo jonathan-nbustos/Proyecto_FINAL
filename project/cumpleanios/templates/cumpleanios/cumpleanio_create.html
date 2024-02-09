@@ -1,0 +1,48 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+{% block title %}
+    AppCalendary | Crear Cumpleaños
+{% endblock title %}
+
+{% block content %}
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="{% static 'AppCalendary/assets/img/avataaars.svg' %}" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Cumpleaños</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Aquí podrás cargar tu cumpleaños</p>
+    </div>
+</header>
+
+<div class="container mt-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Cumpleaños</h5>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="post" class="custom-form">
+                        {% csrf_token %}
+                        
+                        {{ form.as_p }}
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Cargar cumple</button>
+                            <a href="{% url 'cumpleanios:cumpleanio_list' %}" class="btn btn-secondary">Volver</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

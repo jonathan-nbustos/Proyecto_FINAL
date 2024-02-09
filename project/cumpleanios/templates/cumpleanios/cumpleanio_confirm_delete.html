@@ -1,0 +1,44 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+
+{% block title %}
+    AppCalendary | Eliminar Cumpleaños
+{% endblock title %}
+
+{% block content %}
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="{% static 'AppCalendary/assets/img/avataaars.svg' %}" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Cumpleaños</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Eliminar</p>
+    </div>
+</header>
+<div class="container my-5">
+    <div class="card text-center">
+        <div class="card-header">
+            <h2 class="card-title">Eliminar Cumpleaños</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text fs-5 fst-italic">¿Estás seguro de querer eliminar el cumpleaños de: <strong>{{ object.nombre }} {{ object.apellido }} -{{ object.dia }} de {{ object.get_mes_display }}</strong>?</p>
+        </div>
+        <div class="card-footer">
+            <form method="post" class="d-inline">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Eliminar</button>
+            </form>
+            <a href="{% url 'cumpleanios:cumpleanio_list' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock content %}

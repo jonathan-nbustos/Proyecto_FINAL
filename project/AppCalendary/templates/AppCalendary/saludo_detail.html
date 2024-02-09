@@ -1,0 +1,41 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+
+{% block title %}
+    AppCalendary | Detalle de Saludos
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <!-- Masthead-->
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image-->
+            <img class="masthead-avatar mb-5" src="{% static 'AppCalendary/assets/img/avataaars.svg' %}" alt="..." />
+            <!-- Masthead Heading-->
+            <h1 class="masthead-heading text-uppercase mb-0">Saludos</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            <p class="masthead-subheading font-weight-light mb-0">Detalles</p>
+        </div>
+    </header>
+    <h1 class="mt-4">Detalle del Saludo</h1>
+        <div class="card mt-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ object.nombre }} {{ object.apellido }}</h5>
+            <p class="card-text">{{ object.mensaje }}</p>
+          </div>
+        </div>
+    
+        <div class="mt-4">
+          <a href="{% url 'AppCalendary:saludo_list' %}" class="btn btn-primary">Volver a la Lista</a>
+          <a href="{% url 'AppCalendary:saludo_update' object.id %}" class="btn btn-warning">Editar</a>
+          <a href="{% url 'AppCalendary:saludo_delete' object.id %}" class="btn btn-danger">Eliminar</a>
+        </div><br>
+</div>
+{% endblock content %}

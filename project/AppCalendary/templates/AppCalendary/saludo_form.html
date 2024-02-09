@@ -1,0 +1,82 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+
+{% block title %}
+   AppCalendary | {% if form.instance.pk %}Editar{% else %}Crear{% endif %} Saludos
+{% endblock title %}
+
+{% block content %}
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="{% static 'AppCalendary/assets/img/avataaars.svg' %}" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Deja tú saludo</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Escribí tu mensaje</p>
+    </div>
+</header>
+<style>
+    .custom-form {
+        border: 2px solid #ced4da;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .custom-form label {
+        font-weight: bold;
+    }
+    .custom-form input,
+    .custom-form select,
+    .custom-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+</style>
+<div class="container text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="custom-form">
+                <h1 class="mt-4">{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Saludo</h1>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label text-center">Nombre</label>
+                        {{ form.nombre }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_apellido" class="form-label text-center">Apellido</label>
+                        {{ form.apellido }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_mensaje" class="form-label text-center">Mensaje</label>
+                        {{ form.mensaje }}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        {% if form.instance.pk %}Guardar{% else %}Crear{% endif %}
+                    </button>
+                    
+                    <a href="{% url 'AppCalendary:saludo_list' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>      
+{% endblock content %}

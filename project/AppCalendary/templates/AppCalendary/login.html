@@ -1,0 +1,63 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+{% block title %}
+    AppCalendary | Login
+{% endblock title %}
+    
+{% block content %}
+<header class="masthead bg-primary text-white text-center">
+  <div class="container d-flex align-items-center flex-column">
+      <!-- Masthead Avatar Image-->
+
+      <!-- Masthead Heading-->
+      <h1 class="masthead-heading text-uppercase mb-0">Login</h1>
+      <!-- Icon Divider-->
+      <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+      </div>
+    <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Ingresa tus datos para loguearte</p>
+  </div>
+</header>
+<style>
+  .custom-form {
+      border: 2px solid #ced4da;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+  }
+
+  .custom-form label {
+      font-weight: bold;
+      text-align: center;
+  }
+
+  .custom-form input,
+  .custom-form select,
+  .custom-form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      text-align: center;
+  }
+
+  .custom-form button:last-child {
+      margin-right: 0;  /* Elimina el margen derecho del último botón */
+  }
+</style>
+<div class="container text-center">
+  <form method="post" class="custom-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="hidden" name="next" value="{% url 'AppCalendary:index' %}">
+
+      <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+      <a href="{% url 'AppCalendary:saludo_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+<br>
+{% endblock %}

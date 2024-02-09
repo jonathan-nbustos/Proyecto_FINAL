@@ -1,0 +1,74 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+
+{% block title %}
+    AppCalendary | Contacto
+{% endblock title %}
+
+
+{% block content %}
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Contactanos</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Aquí podrás contactarnos por cualquier consulta</p>
+    </div>
+</header>
+<br><br>
+<!-- Contact Section-->
+<section class="page-section" id="contact">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Mensaje</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+                <form id="contactForm" method="post" action="{% url 'AppCalendary:contacto' %}">
+                    {% csrf_token %}
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Ingresa tu nombre" required />
+                        <label for="nombre">Nombre Completo</label>
+                        <div class="invalid-feedback" data-sb-feedback="nombre:required">El nombre es requerido.</div>
+                    </div>
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="correo" id="correo" type="email" placeholder="name@example.com" required />
+                        <label for="correo">Email</label>
+                        <div class="invalid-feedback" data-sb-feedback="correo:required">El email es requerido.</div>
+                        <div class="invalid-feedback" data-sb-feedback="correo:email">Email no valido.</div>
+                    </div>
+                    <!-- Message input-->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="mensaje" id="mensaje" type="text" placeholder="Ingresa tu mensaje..." style="height: 10rem" required></textarea>
+                        <label for="mensaje">Mensaje</label>
+                        <div class="invalid-feedback" data-sb-feedback="mensaje:required">El mensaje es requerido.</div>
+                    </div>
+                    <!-- Submit Button-->
+                    <button class="btn btn-primary btn-xl" type="submit">Enviar</button>
+                    <button class="btn btn-secondary btn-xl" type="reset">Cancelar</button>
+                </form><br><br>
+                {{mensaje}}
+            </div>
+        </div>
+    </div>
+</section>
+<table id="tablacontactos">
+</table>
+{% endblock content %}

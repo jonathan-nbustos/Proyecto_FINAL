@@ -1,0 +1,46 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+
+{% block title %}
+    AppCalendary | About
+{% endblock title %}
+
+
+{% block content %}
+
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="{% static 'AppCalendary/assets/img/avataaars.svg' %}" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Nostros</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Acerca de nosotros:</p>
+    </div>
+</header>
+    <!-- About Section-->
+<div class="container">
+    <!-- About Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <!-- About Section Content-->
+    <div class="row">
+        <div class="col-lg-4 ms-auto"><p>Soy Jonathan Bustos, un apasionado de la ciencia y la tecnología con 33 años y originario de Córdoba. Actualmente, estoy enfocado en mi carrera como estudiante de Ciencia de Datos e Inteligencia Artificial. Mi fascinación por el poder transformador de la información me ha llevado a explorar el emocionante mundo de la ciencia de datos, donde puedo combinar mi amor por la programación y el análisis de datos para extraer conocimientos valiosos.</p></div>
+        <div class="col-lg-4 me-auto"><p>Comencé mi viaje en el desarrollo de aplicaciones y el manejo de datos, y estoy emocionado por las oportunidades de aprendizaje continuo y crecimiento que este campo ofrece. Siempre estoy buscando nuevas formas de aplicar mis habilidades para abordar desafíos y contribuir al avance de la tecnología.</p></div>
+        <div class="col-lg-4 me-auto"><p>En esta oportunidad podrán conocer mi proyecto AppCalendary, una aplicación web para organizar y planificar sus eventos como: Vacaciones, Cumpleaños y dejar sus mensajes. Estoy comprometido con la mejora continua y la creación de soluciones innovadoras. Gracias por considerar mi proyecto</p></div>
+    </div>
+</div><br><br><br>
+
+{% endblock content %}

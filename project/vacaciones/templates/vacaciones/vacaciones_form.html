@@ -1,0 +1,86 @@
+{% extends 'AppCalendary/base.html' %}
+{% load static %}
+
+{% block title %}
+   AppCalendary | {% if form.instance.pk %}Editar{% else %}Crear{% endif %} Vacaciones
+{% endblock title %}
+
+{% block content %}
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="{% static 'AppCalendary/assets/img/avataaars.svg' %}" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Registra tus vacaciones</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Vacaciones</p>
+    </div>
+</header>    
+<style>
+    .custom-form {
+        border: 2px solid #ced4da;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .custom-form label {
+        font-weight: bold;
+    }
+    .custom-form input,
+    .custom-form select,
+    .custom-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+</style>
+<div class="container text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="custom-form">
+                <h1 class="mt-4">{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Vacaciones</h1>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label">Nombre</label>
+                        {{ form.nombre }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_apellido" class="form-label">Apellido</label>
+                        {{ form.apellido }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_fechaInicio" class="form-label">Fecha Inicio</label>
+                        {{ form.fechaInicio }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_fechaFin" class="form-label">Fecha Fin</label>
+                        {{ form.fechaFin }}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        {% if form.instance.pk %}Guardar{% else %}Crear{% endif %}
+                    </button>
+                    
+                    <a href="{% url 'vacaciones:vacaciones_list' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><br>
+{% endblock content %}
