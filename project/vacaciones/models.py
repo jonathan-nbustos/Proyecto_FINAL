@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
-# Create your models here.
 
+# Modelo creado para registrar los vacaciones, dejando: nombre, apellido, fecha de inicio y fecha de fin.
 class Vacaciones(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)

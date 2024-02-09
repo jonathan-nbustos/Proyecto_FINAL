@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
-# Create your models here.
 
+# Modelos creado para obtener el mes de cumpleaños por medio de un listado.
 opciones_consulta = [
     [1, "Enero"],
     [2, "Febrero"],
@@ -17,6 +17,7 @@ opciones_consulta = [
     [12, "Diciembre"]
 ]
 
+# Modelo creado para registrar los cumpleaños, dejando: nombre, apellido, dia, y mes.
 class Cumpleanio(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)

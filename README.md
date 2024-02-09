@@ -65,7 +65,7 @@ SECRET_KEY = get_random_secret_key()
     
 2. Crear las aplicaciones Django con el nombre que desee. En este casose crearon 3:
 
-    - `django-admin startapp AppCalendary`
+    - `django-admin startapp AppCalendary` (aquí también encontrarán los modelos, vistar, url de "Saludos")
     - `django-admin startapp cumpleanios`
     - `django-admin startapp vacaciones`
 
